@@ -24,6 +24,8 @@ SPACEBAR = resume/proceed (when prompted)
 
 SPACEBAR = shoot
 
+ENTER = change difficulty (on start)
+
 ESC = emergency shutdown key (closes game)
 
 ### Screenshots
