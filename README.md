@@ -28,7 +28,7 @@ ESC = emergency shutdown key (closes game)
 
 ### Credits
 
-Fonts:  All fonts used are credit to their original creators, sourced from [1001fonts.com](1001fonts.com).
+Fonts:  All fonts used are credit to their original creators, sourced from www.1001fonts.com.
 
 Images: Player and enemy icons, as well as background images, are created by me and are (C) Creative Commons (non-commercial).
 
