@@ -118,7 +118,6 @@ class Ship(pygame.sprite.Sprite):
 
         self.max_health = 50
         self.health = 50
-
         if hard_mode == True:
             self.health = 25
 
@@ -219,15 +218,26 @@ class Mob(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
-        if level == 1:
-            self.health = 1
-        elif level == 2:
-            self.health = 2
-        elif level == 3:
-            self.health = 3
-        elif level == 4:
-            self.max_health = 200
-            self.health = 200
+        if hard_mode == False:
+            if level == 1:
+                self.health = 1
+            elif level == 2:
+                self.health = 2
+            elif level == 3:
+                self.health = 3
+            elif level == 4:
+                self.max_health = 200
+                self.health = 200
+        else:
+            if level == 1:
+                self.health = 3
+            elif level == 2:
+                self.health = 4
+            elif level == 3:
+                self.health = 5
+            elif level == 4:
+                self.max_health = 400
+                self.health = 400
 
 
     def drop_bomb(self):
@@ -364,14 +374,24 @@ class Bomb(pygame.sprite.Sprite):
         self.image = image
         self.rect = image.get_rect()
         
-        if level == 1:
-            self.speed = 10
-        elif level == 2:
-            self.speed = 8
-        elif level == 3:
-            self.speed = 5
-        elif level == 4:
-            self.speed = 3
+        if hard_mode == False:
+            if level == 1:
+                self.speed = 10
+            elif level == 2:
+                self.speed = 8
+            elif level == 3:
+                self.speed = 5
+            elif level == 4:
+                self.speed = 3
+        else:
+            if level == 1:
+                self.speed = 8
+            elif level == 2:
+                self.speed = 8
+            elif level == 3:
+                self.speed = 4
+            elif level == 4:
+                self.speed = 2
 
 
     def update(self):
@@ -386,29 +406,48 @@ class Fleet():
                 
         self.mobs = mobs
         
-        if level == 1:
-            self.moving_right = True
-            self.speed = 1
-            self.drop = 20
-            self.bomb_rate = 15 # lower is faster, initial is 15
-
-        elif level == 2:
-            self.moving_right = True
-            self.speed = 2
-            self.drop = 20
-            self.bomb_rate = 10
-
-        elif level == 3:
-            self.moving_right = True
-            self.speed = 3
-            self.drop = 20
-            self.bomb_rate = 5
-
-        elif level == 4:
-            self.speed = 10
-            self.moving_right = True
-            self.drop = 10
-            self.bomb_rate = 1
+        if hard_mode == False:
+            if level == 1:
+                self.moving_right = True
+                self.speed = 1
+                self.drop = 20
+                self.bomb_rate = 15 # lower is faster, initial is 15
+            elif level == 2:
+                self.moving_right = True
+                self.speed = 2
+                self.drop = 20
+                self.bomb_rate = 10
+            elif level == 3:
+                self.moving_right = True
+                self.speed = 3
+                self.drop = 20
+                self.bomb_rate = 5
+            elif level == 4:
+                self.speed = 10
+                self.moving_right = True
+                self.drop = 10
+                self.bomb_rate = 1
+        else:
+            if level == 1:
+                self.moving_right = True
+                self.speed = 2
+                self.drop = 22
+                self.bomb_rate = 10
+            elif level == 2:
+                self.moving_right = True
+                self.speed = 2
+                self.drop = 22
+                self.bomb_rate = 7
+            elif level == 3:
+                self.moving_right = True
+                self.speed = 3
+                self.drop = 22
+                self.bomb_rate = 4
+            elif level == 4:
+                self.speed = 20
+                self.moving_right = True
+                self.drop = 10
+                self.bomb_rate = 1
 
     def move(self):
         hits_edge = False
@@ -559,12 +598,12 @@ def show_title_screen():
     screen.blit(splash_img_resample, [0, 0])
     title_text = FONT_XL.render("Danmaku Python Shooter", 1, WHITE)
     sub_text = FONT_LG.render("Press SPACE to start!", 1, WHITE)
-    difficulty_txt = FONT_SM.render("Difficulty: " + str(difficulty) + " (Press ENTER key to change)")
+    difficulty_txt = FONT_SM.render("Difficulty: " + str(difficulty) + " (Press ENTER key to change)", 1, YELLOW)
     t1 = title_text.get_width()
     t2 = sub_text.get_width()
     difficulty_rect = difficulty_txt.get_rect()
     difficulty_rect.right = WIDTH - 20
-    difficulty_rect.top = HEIGHT - 20
+    difficulty_rect.top =  20
     screen.blit(title_text, [WIDTH/2 - t1/2, 256])
     screen.blit(sub_text, [WIDTH/2 - t2/2, 356])
     screen.blit(difficulty_txt, difficulty_rect)
@@ -660,6 +699,13 @@ def draw_boss_health():
     pygame.draw.rect(screen, color, [215, 682, bar_length, 28])
 
 def draw_current_level(level):
+    if hard_mode == True:
+        difficulty_txt = FONT_SM.render("(Hard Mode)", 1, YELLOW)
+        difficulty_rect = difficulty_txt.get_rect()
+        difficulty_rect.left = 20
+        difficulty_rect.top =  60
+        screen.blit(difficulty_txt, difficulty_rect)
+    
     if level < 4:
         h1 = FONT_MD.render("Level: " + str(level), True, YELLOW)
         screen.blit(h1, [20, 20])
