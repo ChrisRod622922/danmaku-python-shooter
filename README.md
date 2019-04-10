@@ -26,6 +26,10 @@ SPACEBAR = shoot
 
 ESC = emergency shutdown key (closes game)
 
+### Screenshots
+
+Coming soon.
+
 ### Credits
 
 Fonts:  All fonts used are credit to their original creators, sourced from www.1001fonts.com.
