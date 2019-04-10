@@ -4,14 +4,16 @@ CHANGE LOG FOR 'DANMAKU PYTHON SHOOTER' BY CHRISTOPHER RODRIGUEZ
 Version 1.01a (April 9, 2019):
 - Added splash screen
 
-Version 1.03b (April 11, 2019)
-- Rearranged splash screen and START UI
-- Added version number on START screen
+Version 1.02a (April 10, 2019):
 - Added new 'HARD' difficulty
 - Player HP reduced to 50% (25 hits) on 'HARD' difficulty
 - Fixed POWERUP respawning bug
 
-Version 1.04a (TBD):
+Version 1.03a (April 11, 2019):
+- Rearranged splash screen and START UI
+- Added version number on START screen
+
+Version 1.04b (TBD):
 - Added SIDE SHOOTERS to increase difficulty of BOSS stage
 
 Version 1.05a (TBD):
