@@ -117,8 +117,10 @@ class Ship(pygame.sprite.Sprite):
         self.laser_speed = 20  # Original is 20
 
         self.max_health = 50
-        self.health = 50
-        if hard_mode == True:
+
+        if hard_mode == False:
+            self.health = 50
+        else:
             self.health = 25
 
     def move_left(self):
@@ -230,11 +232,11 @@ class Mob(pygame.sprite.Sprite):
                 self.health = 200
         else:
             if level == 1:
-                self.health = 3
+                self.health = 2
             elif level == 2:
-                self.health = 4
+                self.health = 3
             elif level == 3:
-                self.health = 5
+                self.health = 4
             elif level == 4:
                 self.max_health = 400
                 self.health = 400
@@ -430,18 +432,18 @@ class Fleet():
         else:
             if level == 1:
                 self.moving_right = True
-                self.speed = 2
-                self.drop = 22
+                self.speed = 3
+                self.drop = 20
                 self.bomb_rate = 10
             elif level == 2:
                 self.moving_right = True
-                self.speed = 2
-                self.drop = 22
+                self.speed = 3
+                self.drop = 20
                 self.bomb_rate = 7
             elif level == 3:
                 self.moving_right = True
-                self.speed = 3
-                self.drop = 22
+                self.speed = 4
+                self.drop = 20
                 self.bomb_rate = 4
             elif level == 4:
                 self.speed = 20
@@ -737,7 +739,7 @@ def get_powerup_location():
     global powerup_x, powerup_y
     
     powerup_x = random.randrange(0, WIDTH)
-    powerup_y = random.randrange(-30000, -2500)
+    powerup_y = random.randrange(-30000, -1000)
 
 def start_level(level):
     global mobs, mob_list, ship, fleet
@@ -840,6 +842,7 @@ def setup():
     player.score = 5000
     player.high_score = 5000
     
+    ''' Retrieve High Score if it exists '''
     file_high_score = open('high_score.txt', 'r')
     player.high_score = int(file_high_score.readline())
     file_high_score.close()
@@ -852,14 +855,17 @@ def setup():
 
     ''' Add powerups '''
     get_powerup_location()
-    
     powerup1 = HealthPowerup(powerup_x, powerup_y, powerup_img)
+
     get_powerup_location()
     powerup2 = SpeedPowerup(powerup_x, powerup_y, speed_powerup_img)
+
     get_powerup_location()
     powerup3 = ShootingSpeedPowerup(powerup_x, powerup_y, laser_speed_powerup_img)
+
     powerups.add(powerup1, powerup2, powerup3)
 
+    ''' Begin first level '''
     start_level(level)
     
     ''' set stage '''
