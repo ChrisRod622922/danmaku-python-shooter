@@ -1,36 +1,29 @@
-## Welcome to GitHub Pages
+## Welcome to the Official Site of Danmaku Python Shooter!
 
-You can use the [editor on GitHub](https://github.com/ChrisRod622922/danmaku-python-shooter/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Danmaku Python Shooter is a shooting game where you must protect your Windows desktop from being invaded by malicious viruses. The word "danmaku" is a Japanese word for "bullethell," which is the genre of video games where the player must evade a barrage of projectiles with normally very little HP. You can download the [ZIP HERE](https://github.com/ChrisRod622922/danmaku-python-shooter). Windows .exe file coming soon!
+
+### Story
+
+Computer viruses have invaded your Windows desktop! As an anti-virus, it is your job to prevent these nasty bugs from corrupting the system by eliminating them one by one. Be careful, though, as a powerful enemy awaits you at the end. Can you save the precious files in your file system?
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### How to Play
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Using the arrow keys to move around, and SPACEBAR to shoot, eliminate the enemies in each level without losing your health (green bar on taskbar). Some enemies will have more than 1 HP, so it is important to act fast and efficiently. Use items that fall from the sky to enable faster shooting, increased speed, and health boosters.
 
-```markdown
-Syntax highlighted code block
+The starting score is 5000. For every point of health lost,
+the player's score goes down by 100. Every time an enemy is
+hit, you are awarded 50 points.
 
-# Header 1
-## Header 2
-### Header 3
+### Keys
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ChrisRod622922/danmaku-python-shooter/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+ARROW KEYS = move up/down/left/right
+p = pause game
+r = restart game
+SPACEBAR = resume/proceed (when prompted)
+SPACEBAR = shoot
+ESC = emergency shutdown key (closes game)
 
 ### Support or Contact
 
