@@ -6,15 +6,11 @@ Danmaku Python Shooter is a shooting game where you must protect your Windows de
 
 Computer viruses have invaded your Windows desktop! As an anti-virus, it is your job to prevent these nasty bugs from corrupting the system by eliminating them one by one. Be careful, though, as a powerful enemy awaits you at the end. Can you save the precious files in your file system?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
 ### How to Play
 
 Using the arrow keys to move around, and SPACEBAR to shoot, eliminate the enemies in each level without losing your health (green bar on taskbar). Some enemies will have more than 1 HP, so it is important to act fast and efficiently. Use items that fall from the sky to enable faster shooting, increased speed, and health boosters.
 
-The starting score is 5000. For every point of health lost,
-the player's score goes down by 100. Every time an enemy is
-hit, you are awarded 50 points.
+The starting score is 5000. For every point of health lost, the player's score goes down by 100. Every time an enemy is hit, you are awarded 50 points.
 
 ### Keys
 
@@ -25,6 +21,20 @@ SPACEBAR = resume/proceed (when prompted)
 SPACEBAR = shoot
 ESC = emergency shutdown key (closes game)
 
+### Credits
+
+Fonts:  All fonts used are credit to their original creators, sourced from 1001fonts.com.
+
+Images: Player and enemy icons, as well as background images, are created by me and are (C) Creative Commons (non-commercial).
+
+Music: "Eye of the Storm" by BaltaZzar, (C) 2018 All Rights Reserved. DISCLAIMER: I do not own the rights to this song, so therefore do NOT reproduce, distribute, or sell this game without written consent from myself or the original song artist!
+
+Sounds: All sound effects used are (c) Creative Commons and are free to download at www.freesound.org.
+
+### How to Run
+
+Coming soon.
+
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Coming soon.
