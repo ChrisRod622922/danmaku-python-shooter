@@ -15,19 +15,26 @@ The starting score is 5000. For every point of health lost, the player's score g
 ### Keys
 
 ARROW KEYS = move up/down/left/right
+
 p = pause game
+
 r = restart game
+
 SPACEBAR = resume/proceed (when prompted)
+
 SPACEBAR = shoot
+
 ESC = emergency shutdown key (closes game)
 
 ### Credits
 
-Fonts:  All fonts used are credit to their original creators, sourced from 1001fonts.com.
+Fonts:  All fonts used are credit to their original creators, sourced from [1001fonts.com](1001fonts.com).
 
 Images: Player and enemy icons, as well as background images, are created by me and are (C) Creative Commons (non-commercial).
 
-Music: "Eye of the Storm" by BaltaZzar, (C) 2018 All Rights Reserved. DISCLAIMER: I do not own the rights to this song, so therefore do NOT reproduce, distribute, or sell this game without written consent from myself or the original song artist!
+Music: "Eye of the Storm" by BaltaZzar, (C) 2018 All Rights Reserved.
+
+DISCLAIMER: I do not own the rights to this song, so therefore do NOT reproduce, distribute, or sell this game without written consent from myself or the original song artist!
 
 Sounds: All sound effects used are (c) Creative Commons and are free to download at www.freesound.org.
 
