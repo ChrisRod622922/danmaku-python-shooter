@@ -16,7 +16,7 @@ pygame.init()
 WIDTH = 1280
 HEIGHT = 720
 SIZE = (WIDTH, HEIGHT)
-TITLE = "Danmaku Python Shooter v1.01a"
+TITLE = "Danmaku Python Shooter v1.02a"
 #screen = pygame.display.set_mode(SIZE)
 ''' uncomment below to enable fullscreen mode and comment the above screen variable '''
 screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN)
@@ -118,6 +118,9 @@ class Ship(pygame.sprite.Sprite):
 
         self.max_health = 50
         self.health = 50
+
+        if hard_mode == True:
+            self.health = 25
 
     def move_left(self):
         self.rect.x -= self.speed
@@ -475,7 +478,10 @@ class HealthPowerup(pygame.sprite.Sprite):
         
 
     def apply(self, ship):
-        ship.health = 50
+        if hard_mode == True:
+            ship.health = 25
+        else:
+            ship.health = 50
 
     def update(self):
         hit_list = pygame.sprite.spritecollide(self, player, True)
@@ -544,13 +550,24 @@ class ShootingSpeedPowerup(pygame.sprite.Sprite):
 
 # Game helper functions
 def show_title_screen():
+    difficulty = "NORMAL"
+    if hard_mode == True:
+        difficulty = "HARD"
+    elif hard_mode == False:
+        difficulty = "NORMAL"
+
     screen.blit(splash_img_resample, [0, 0])
     title_text = FONT_XL.render("Danmaku Python Shooter", 1, WHITE)
     sub_text = FONT_LG.render("Press SPACE to start!", 1, WHITE)
+    difficulty_txt = FONT_SM.render("Difficulty: " + str(difficulty) + " (Press ENTER key to change)")
     t1 = title_text.get_width()
     t2 = sub_text.get_width()
+    difficulty_rect = difficulty_txt.get_rect()
+    difficulty_rect.right = WIDTH - 20
+    difficulty_rect.top = HEIGHT - 20
     screen.blit(title_text, [WIDTH/2 - t1/2, 256])
     screen.blit(sub_text, [WIDTH/2 - t2/2, 356])
+    screen.blit(difficulty_txt, difficulty_rect)
 
 def show_main_background():
     screen.blit(background_img_resample, [0, 0])
@@ -755,11 +772,14 @@ def begin_fight():
 
 
 def setup():
-    global stage, level, powerup_x, powerup_y, done
+    global stage, hard_mode, level, powerup_x, powerup_y, done
     global player, ship, lasers, mobs, bombs, powerups, fleet
 
     ''' Initial Game Level '''
     level = 1
+
+    ''' Initial Difficulty Set to Normal '''
+    hard_mode = False
     
     ''' Make game objects '''
     ship = Ship(ship_img)
@@ -817,6 +837,8 @@ while not done:
                 if event.key == pygame.K_SPACE:
                     stage = PLAYING
                     music()
+                elif event.key == pygame.K_RETURN:
+                    hard_mode = not hard_mode
             elif stage == PLAYING:
                 if event.key == pygame.K_r:
                     setup()
