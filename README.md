@@ -32,15 +32,19 @@ Coming soon.
 
 ### Credits
 
-Fonts:  All fonts used are credit to their original creators, sourced from www.1001fonts.com.
+#### Fonts
+All fonts used are credit to their original creators, sourced from www.1001fonts.com.
 
-Images: Player and enemy icons, as well as background images, are created by me and are (C) Creative Commons (non-commercial).
+#### Images
+Player and enemy icons, as well as background images, are created by me and are (C) Creative Commons (non-commercial).
 
-Music: "Eye of the Storm" by BaltaZzar, (C) 2018 All Rights Reserved.
+#### Music
+"Eye of the Storm" by BaltaZzar, (C) 2018 All Rights Reserved.
 
 DISCLAIMER: I do not own the rights to this song, so therefore do NOT reproduce, distribute, or sell this game without written consent from myself or the original song artist!
 
-Sounds: All sound effects used are (c) Creative Commons and are free to download at www.freesound.org.
+#### Sounds
+All sound effects used are (c) Creative Commons and are free to download at www.freesound.org.
 
 ### How to Run
 
