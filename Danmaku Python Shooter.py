@@ -513,8 +513,8 @@ class HealthPowerup(pygame.sprite.Sprite):
         self.rect = image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.rect.x = powerup_x
+        self.rect.y = powerup_y
         self.speed = 5
         
 
@@ -531,6 +531,8 @@ class HealthPowerup(pygame.sprite.Sprite):
 
         if self.rect.top > HEIGHT:
             get_powerup_location()
+            self.rect.x = powerup_x
+            self.rect.y = powerup_y
         elif len(hit_list) > 0:
             self.kill()
 
@@ -543,8 +545,8 @@ class SpeedPowerup(pygame.sprite.Sprite):
         self.rect = image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.rect.x = powerup_x
+        self.rect.y = powerup_y
         self.speed = 5
 
 
@@ -558,6 +560,8 @@ class SpeedPowerup(pygame.sprite.Sprite):
 
         if self.rect.top > HEIGHT:
             get_powerup_location()
+            self.rect.x = powerup_x
+            self.rect.y = powerup_y
         elif len(hit_list) > 0:
             self.kill()
 
@@ -570,8 +574,8 @@ class ShootingSpeedPowerup(pygame.sprite.Sprite):
         self.rect = image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.rect.x = powerup_x
+        self.rect.y = powerup_y
         self.speed = 5
 
 
@@ -585,6 +589,8 @@ class ShootingSpeedPowerup(pygame.sprite.Sprite):
 
         if self.rect.top > HEIGHT:
             get_powerup_location()
+            self.rect.x = powerup_x
+            self.rect.y = powerup_y
         elif len(hit_list) > 0:
             self.kill()
 
