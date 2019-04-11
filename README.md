@@ -30,7 +30,35 @@ ESC = emergency shutdown key (closes game)
 
 ### Screenshots
 
-![Title Screen](/assets/images/screenshots/sh.png) ![Level 1 Gameplay](/assets/images/screenshots/sh2.png) ![Stage Clear](/assets/images/screenshots/sh3.png)
+#### Title Screen
+![Title Screen](/assets/images/screenshots/sh.png)
+
+#### Level 1 Gameplay
+![Level 1 Gameplay](/assets/images/screenshots/sh2.png)
+
+#### Stage Clear
+![Stage Clear](/assets/images/screenshots/sh3.png)
+
+#### Second Wave
+![Second Wave](/assets/images/screenshots/sh4.png)
+
+#### Third Wave
+![Third Wave](/assets/images/screenshots/sh5.png)
+
+#### Pause Screen and Powerup
+![Pause Screen and Powerup](/assets/images/screenshots/sh6.png)
+
+#### Final Boss
+![Final Boss](/assets/images/screenshots/sh7.png)
+
+#### Win Screen
+![Win Screen](/assets/images/screenshots/sh8.png)
+
+#### Game Over Screen
+![Game Over Screen](/assets/images/screenshots/sh9.png)
+
+#### Hard Mode
+![Hard Mode](/assets/images/screenshots/sh10.png)
 
 ### Credits
 
