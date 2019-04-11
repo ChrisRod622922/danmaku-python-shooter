@@ -66,7 +66,7 @@ ESC = emergency shutdown key (closes game)
 ### Credits
 
 #### Fonts
-All fonts used are credit to their original creators, sourced from [www.1001fonts.com](www.1001fonts.com).
+All fonts used are credit to their original creators, sourced from [www.1001fonts.com](https://www.1001fonts.com).
 
 #### Images
 Player and enemy icons, as well as background images, are created by me. Please do not use any images without explicit permission.
@@ -77,7 +77,7 @@ Player and enemy icons, as well as background images, are created by me. Please 
 DISCLAIMER: I do not own the rights to this song, so do NOT reproduce, distribute, or sell this game without consent from myself or written consent from the original song artist!
 
 #### Sounds
-All sound effects used are (C) Creative Commons and are free to download at [www.freesound.org](www.freesound.org).
+All sound effects used are (C) Creative Commons and are free to download at [www.freesound.org](https://www.freesound.org).
 
 ### How to Run (April 11, 2019)
 As of Version 1.02b (April 11, 2019), you will need to install pygame and the latest version of Python to play this game. Please see the following guides to install based on your operating system. [Install pygame](https://www.pygame.org/wiki/GettingStarted) and [install Python](https://www.python.org).
