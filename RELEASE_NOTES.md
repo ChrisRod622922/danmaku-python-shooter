@@ -1,4 +1,5 @@
 ## Release Notes
+The following release notes pertain to the python file found in the source code.
 
 ### Version 1.01a (April 9, 2019):
 - Added splash screen
@@ -11,10 +12,3 @@
 ### Version 1.03b (April 11, 2019):
 - Rearranged splash screen and START UI
 - Added version number on START screen
-
-### Version 1.04a (TBD):
-- Added SIDE SHOOTERS to increase difficulty of BOSS stage
-
-### Version 1.05a (TBD):
-- Added a shield attribute to the player 9 (can be activated
-  by clicking the 's' key on the keyboard)
