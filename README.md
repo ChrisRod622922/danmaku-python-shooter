@@ -12,6 +12,9 @@ Using the arrow keys to move around, and SPACEBAR to shoot, eliminate the enemie
 
 The starting score is 5000. For every point of health lost, the player's score goes down by 100. Every time an enemy is hit, you are awarded 50 points.
 
+### Hard Mode
+When playing in _HARD_, the player will only have 50% HP and enemies will be tougher. Watch out!
+
 ### Keys
 
 ARROW KEYS = move up/down/left/right
