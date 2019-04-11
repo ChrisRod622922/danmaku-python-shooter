@@ -120,10 +120,12 @@ class Ship(pygame.sprite.Sprite):
         self.health = 50
 
     def set_normal_mode(self):
-        self.health = 50
+        if self.health >= 50:
+            self.health = 50
     
     def set_hard_mode(self):
-        self.health = 25
+        if self.health >= 25:
+            self.health = 25
 
     def move_left(self):
         self.rect.x -= self.speed
