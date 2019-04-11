@@ -16,7 +16,7 @@ pygame.init()
 WIDTH = 1280
 HEIGHT = 720
 SIZE = (WIDTH, HEIGHT)
-TITLE = "Danmaku Python Shooter v1.02a"
+TITLE = "Danmaku Python Shooter v1.02b"
 #screen = pygame.display.set_mode(SIZE)
 ''' uncomment below to enable fullscreen mode and comment the above screen variable '''
 screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN)
@@ -378,25 +378,24 @@ class Bomb(pygame.sprite.Sprite):
         self.image = image
         self.rect = image.get_rect()
         
-    def set_normal_mode(self):
-        if level == 1:
-            self.speed = 10
-        elif level == 2:
-            self.speed = 8
-        elif level == 3:
-            self.speed = 5
-        elif level == 4:
-            self.speed = 3
-    
-    def set_hard_mode(self):
-        if level == 1:
-            self.speed = 8
-        elif level == 2:
-            self.speed = 8
-        elif level == 3:
-            self.speed = 4
-        elif level == 4:
-            self.speed = 2
+        if hard_mode == False:
+            if level == 1:
+                self.speed = 10
+            elif level == 2:
+                self.speed = 8
+            elif level == 3:
+                self.speed = 5
+            elif level == 4:
+                self.speed = 3
+        else:
+            if level == 1:
+                self.speed = 8
+            elif level == 2:
+                self.speed = 8
+            elif level == 3:
+                self.speed = 4
+            elif level == 4:
+                self.speed = 2
 
 
     def update(self):
@@ -682,13 +681,13 @@ def music():
 def update_mode():
     if hard_mode == True:
         ship.set_hard_mode()
-        mobs.set_hard_mode()
-        bombs.set_hard_mode()
+        for m in mobs:
+            m.set_hard_mode()
         fleet.set_hard_mode()
     elif hard_mode == False:
         ship.set_normal_mode()
-        mobs.set_normal_mode()
-        bombs.set_normal_mode()
+        for mo in mobs:
+            mo.set_normal_mode()
         fleet.set_normal_mode()
 
 def draw_health(player):
@@ -871,7 +870,7 @@ def setup():
     file_high_score.close()
     
     ''' Make remaining sprite groups '''
-    mobs = pygame.sprite.Group()    
+    mobs = pygame.sprite.Group()
     lasers = pygame.sprite.Group()
     bombs = pygame.sprite.Group()
     powerups = pygame.sprite.Group()

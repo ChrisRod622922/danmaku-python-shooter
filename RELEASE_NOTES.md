@@ -9,6 +9,5 @@ The following release notes pertain to the python file found in the source code.
 - Player HP reduced to 50% (25 hits) on 'HARD' difficulty
 - Fixed POWERUP respawning bug
 
-### Version 1.03b (April 11, 2019):
-- Rearranged splash screen and START UI
-- Added version number on START screen
+### Version 1.02b (April 11, 2019):
+- Fixed 'HARD' mode variable bug
