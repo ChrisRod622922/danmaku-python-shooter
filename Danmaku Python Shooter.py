@@ -117,6 +117,7 @@ class Ship(pygame.sprite.Sprite):
         self.laser_speed = 20  # Original is 20
         
         self.max_health = 50
+        self.health = 50
 
     def set_normal_mode(self):
         self.health = 50
@@ -220,6 +221,8 @@ class Mob(pygame.sprite.Sprite):
         self.rect = image.get_rect()
         self.rect.x = x
         self.rect.y = y
+
+        self.health = 1
 
     def set_normal_mode(self):
         if level == 1:
@@ -409,6 +412,10 @@ class Fleet():
     def __init__(self, mobs):
                 
         self.mobs = mobs
+        self.moving_right = True
+        self.speed = 1
+        self.drop = 20
+        self.bomb_rate = 15
         
     def set_normal_mode(self):
         if level == 1:
@@ -427,7 +434,7 @@ class Fleet():
             self.drop = 20
             self.bomb_rate = 5
         elif level == 4:
-            self.speed = 10
+            self.speed = 5
             self.moving_right = True
             self.drop = 10
             self.bomb_rate = 1
@@ -449,7 +456,7 @@ class Fleet():
             self.drop = 20
             self.bomb_rate = 4
         elif level == 4:
-            self.speed = 20
+            self.speed = 10
             self.moving_right = True
             self.drop = 10
             self.bomb_rate = 1
@@ -829,6 +836,9 @@ def start_level(level):
     mobs.add(mob_list)
     fleet = Fleet(mobs)
 
+    ''' Initialize Mode '''
+    update_mode()
+
 def begin_fight():
     global mobs, mob_list
 
@@ -839,6 +849,9 @@ def begin_fight():
     mob_list = [mob]
 
     mobs.add(mob_list)
+
+    ''' Update Mode '''
+    update_mode()
 
 
 def setup():
