@@ -115,13 +115,14 @@ class Ship(pygame.sprite.Sprite):
 
         self.timer = 0
         self.laser_speed = 20  # Original is 20
-
+        
         self.max_health = 50
 
-        if hard_mode == False:
-            self.health = 50
-        else:
-            self.health = 25
+    def set_normal_mode(self):
+        self.health = 50
+    
+    def set_hard_mode(self):
+        self.health = 25
 
     def move_left(self):
         self.rect.x -= self.speed
@@ -220,26 +221,27 @@ class Mob(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
 
-        if hard_mode == False:
-            if level == 1:
-                self.health = 1
-            elif level == 2:
-                self.health = 2
-            elif level == 3:
-                self.health = 3
-            elif level == 4:
-                self.max_health = 200
-                self.health = 200
-        else:
-            if level == 1:
-                self.health = 2
-            elif level == 2:
-                self.health = 3
-            elif level == 3:
-                self.health = 4
-            elif level == 4:
-                self.max_health = 400
-                self.health = 400
+    def set_normal_mode(self):
+        if level == 1:
+            self.health = 1
+        elif level == 2:
+            self.health = 2
+        elif level == 3:
+            self.health = 3
+        elif level == 4:
+            self.max_health = 200
+            self.health = 200
+    
+    def set_hard_mode(self):
+        if level == 1:
+            self.health = 2
+        elif level == 2:
+            self.health = 3
+        elif level == 3:
+            self.health = 4
+        elif level == 4:
+            self.max_health = 400
+            self.health = 400
 
 
     def drop_bomb(self):
@@ -376,24 +378,25 @@ class Bomb(pygame.sprite.Sprite):
         self.image = image
         self.rect = image.get_rect()
         
-        if hard_mode == False:
-            if level == 1:
-                self.speed = 10
-            elif level == 2:
-                self.speed = 8
-            elif level == 3:
-                self.speed = 5
-            elif level == 4:
-                self.speed = 3
-        else:
-            if level == 1:
-                self.speed = 8
-            elif level == 2:
-                self.speed = 8
-            elif level == 3:
-                self.speed = 4
-            elif level == 4:
-                self.speed = 2
+    def set_normal_mode(self):
+        if level == 1:
+            self.speed = 10
+        elif level == 2:
+            self.speed = 8
+        elif level == 3:
+            self.speed = 5
+        elif level == 4:
+            self.speed = 3
+    
+    def set_hard_mode(self):
+        if level == 1:
+            self.speed = 8
+        elif level == 2:
+            self.speed = 8
+        elif level == 3:
+            self.speed = 4
+        elif level == 4:
+            self.speed = 2
 
 
     def update(self):
@@ -408,48 +411,49 @@ class Fleet():
                 
         self.mobs = mobs
         
-        if hard_mode == False:
-            if level == 1:
-                self.moving_right = True
-                self.speed = 1
-                self.drop = 20
-                self.bomb_rate = 15 # lower is faster, initial is 15
-            elif level == 2:
-                self.moving_right = True
-                self.speed = 2
-                self.drop = 20
-                self.bomb_rate = 10
-            elif level == 3:
-                self.moving_right = True
-                self.speed = 3
-                self.drop = 20
-                self.bomb_rate = 5
-            elif level == 4:
-                self.speed = 10
-                self.moving_right = True
-                self.drop = 10
-                self.bomb_rate = 1
-        else:
-            if level == 1:
-                self.moving_right = True
-                self.speed = 3
-                self.drop = 20
-                self.bomb_rate = 10
-            elif level == 2:
-                self.moving_right = True
-                self.speed = 3
-                self.drop = 20
-                self.bomb_rate = 7
-            elif level == 3:
-                self.moving_right = True
-                self.speed = 4
-                self.drop = 20
-                self.bomb_rate = 4
-            elif level == 4:
-                self.speed = 20
-                self.moving_right = True
-                self.drop = 10
-                self.bomb_rate = 1
+    def set_normal_mode(self):
+        if level == 1:
+            self.moving_right = True
+            self.speed = 1
+            self.drop = 20
+            self.bomb_rate = 15 # lower is faster, initial is 15
+        elif level == 2:
+            self.moving_right = True
+            self.speed = 2
+            self.drop = 20
+            self.bomb_rate = 10
+        elif level == 3:
+            self.moving_right = True
+            self.speed = 3
+            self.drop = 20
+            self.bomb_rate = 5
+        elif level == 4:
+            self.speed = 10
+            self.moving_right = True
+            self.drop = 10
+            self.bomb_rate = 1
+    
+    def set_hard_mode(self):
+        if level == 1:
+            self.moving_right = True
+            self.speed = 3
+            self.drop = 20
+            self.bomb_rate = 10
+        elif level == 2:
+            self.moving_right = True
+            self.speed = 3
+            self.drop = 20
+            self.bomb_rate = 7
+        elif level == 3:
+            self.moving_right = True
+            self.speed = 4
+            self.drop = 20
+            self.bomb_rate = 4
+        elif level == 4:
+            self.speed = 20
+            self.moving_right = True
+            self.drop = 10
+            self.bomb_rate = 1
 
     def move(self):
         hits_edge = False
@@ -595,7 +599,7 @@ class ShootingSpeedPowerup(pygame.sprite.Sprite):
             self.kill()
 
 
-# Game helper functions
+# Drawing Functions
 def show_title_screen():
     difficulty = "NORMAL"
     if hard_mode == True:
@@ -673,6 +677,19 @@ def music():
         pygame.mixer.music.stop()
     elif stage == PAUSE:
         pygame.mixer.music.pause()
+
+# Helper Functions
+def update_mode():
+    if hard_mode == True:
+        ship.set_hard_mode()
+        mobs.set_hard_mode()
+        bombs.set_hard_mode()
+        fleet.set_hard_mode()
+    elif hard_mode == False:
+        ship.set_normal_mode()
+        mobs.set_normal_mode()
+        bombs.set_normal_mode()
+        fleet.set_normal_mode()
 
 def draw_health(player):
     ratio = ship.health / ship.max_health
@@ -897,6 +914,7 @@ while not done:
                     music()
                 elif event.key == pygame.K_RETURN:
                     hard_mode = not hard_mode
+                    update_mode()
             elif stage == PLAYING:
                 if event.key == pygame.K_r:
                     setup()
