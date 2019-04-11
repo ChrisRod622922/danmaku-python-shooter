@@ -63,6 +63,13 @@ ESC = emergency shutdown key (closes game)
 #### Hard Mode
 ![Hard Mode](/assets/images/screenshots/sh10.png)
 
+### How to Run (April 11, 2019)
+As of Version 1.02b (April 11, 2019), you will need to install pygame and the latest version of Python to play this game. Please see the following guides to install based on your operating system. [Install pygame](https://www.pygame.org/wiki/GettingStarted) and [install Python](https://www.python.org).
+
+1. Download the ZIP file from the main repository on Github.
+2. Extract the files on your file system.
+3. Double-click the file ending in _.py_.
+
 ### Credits
 
 #### Fonts
@@ -78,13 +85,6 @@ DISCLAIMER: I do not own the rights to this song, so do NOT reproduce, distribut
 
 #### Sounds
 All sound effects used are (C) Creative Commons and are free to download at [www.freesound.org](https://www.freesound.org).
-
-### How to Run (April 11, 2019)
-As of Version 1.02b (April 11, 2019), you will need to install pygame and the latest version of Python to play this game. Please see the following guides to install based on your operating system. [Install pygame](https://www.pygame.org/wiki/GettingStarted) and [install Python](https://www.python.org).
-
-1. Download the ZIP file from the main repository on Github.
-2. Extract the files on your file system.
-3. Double-click the file ending in _.py_.
 
 ### Support and Contact
 
