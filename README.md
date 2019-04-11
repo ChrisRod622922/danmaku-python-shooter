@@ -30,7 +30,8 @@ ESC = emergency shutdown key (closes game)
 
 ### Screenshots
 
-Coming soon.
+#### Title Screen
+![Title Screen](assets/images/screenshots/sh1.png)
 
 ### Credits
 
