@@ -439,7 +439,7 @@ class Fleet():
             self.speed = 5
             self.moving_right = True
             self.drop = 10
-            self.bomb_rate = 1
+            self.bomb_rate = 2
     
     def set_hard_mode(self):
         if level == 1:
