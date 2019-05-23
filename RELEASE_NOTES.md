@@ -11,3 +11,6 @@ The following release notes pertain to the python file found in the source code.
 
 ### Version 1.02b (April 11, 2019):
 - Fixed 'HARD' mode variable bug
+
+### Version 1.03 (TBA):
+- Added 'Options' menu and fullscreen toggle
