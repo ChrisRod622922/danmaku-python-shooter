@@ -14,6 +14,7 @@ The following release notes pertain to the python file found in the source code.
 
 ### Version 1.03a (TBA):
 - Resolved 'HARD' mode bug where boss's HP went into the negative
+- Moved _high_score.txt_ to root of repository to resolve issue of high scores not being retained after closing the game
 
 ### Version 1.03b (TBA):
 - Added 'Options' menu and fullscreen toggle
