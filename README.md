@@ -63,11 +63,9 @@ ESC = emergency shutdown key (closes game)
 #### Hard Mode
 ![Hard Mode](/assets/images/screenshots/sh10.png)
 
-### How to Run (May 24, 2019)
+### How to Run
 1. Download an application file from the _releases_ tab in the main repository on Github.
 2. Double-click the file to launch the game.
-
-*Note:* You must have Python version 3.6 or higher in order to execute the game.
 
 ### Credits
 
