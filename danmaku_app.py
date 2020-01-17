@@ -5,6 +5,12 @@
 #
 # 5th Period Programming
 # See READ_ME file for instructions and credits!
+#
+#
+# TO-DO'S FOR VERSION 1.03a:
+# Fix Hard Mode bug where boss's HP goes into negative; organize code/comments before remaking app
+''' CURRENTLY IN DEBUG MODE (shoot speed high, health infinite, level auto set to 3)
+RESET HIGH SCORE TO 5000 WHEN DONE '''
 
 
 # pylint: disable=import-error
@@ -24,10 +30,10 @@ pygame.init()
 WIDTH = 1280
 HEIGHT = 720
 SIZE = (WIDTH, HEIGHT)
-TITLE = "Danmaku Python Shooter v1.02b"
-#screen = pygame.display.set_mode(SIZE)
+TITLE = "Danmaku Python Shooter v1.03a"
+screen = pygame.display.set_mode(SIZE)
 ''' uncomment below to enable fullscreen mode and comment the above screen variable '''
-screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN)
+#screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN)
 pygame.display.set_caption(TITLE)
 
 
@@ -122,7 +128,7 @@ class Ship(pygame.sprite.Sprite):
         self.speed = 5
 
         self.timer = 0
-        self.laser_speed = 20  # Original is 20
+        self.laser_speed = 5  # Original is 20
         
         self.max_health = 50
         self.health = 50
@@ -133,7 +139,7 @@ class Ship(pygame.sprite.Sprite):
     
     def set_hard_mode(self):
         if self.health >= 25:
-            self.health = 25
+            self.health = 250
 
     def move_left(self):
         self.rect.x -= self.speed
@@ -223,16 +229,13 @@ class Mob(pygame.sprite.Sprite):
     def __init__(self, x, y, image):
         super().__init__()
 
-        global boss_maxHP, boss_HP
-        boss_maxHP = 200
-        boss_HP = 200
-
         self.image = image
         self.rect = image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
+        
         self.health = 1
+        self.max_health = 1
 
     def set_normal_mode(self):
         if level == 1:
@@ -253,8 +256,8 @@ class Mob(pygame.sprite.Sprite):
         elif level == 3:
             self.health = 4
         elif level == 4:
-            self.max_health = 400
-            self.health = 400
+            self.max_health = 300
+            self.health = 300
 
 
     def drop_bomb(self):
@@ -369,6 +372,7 @@ class Mob(pygame.sprite.Sprite):
 
 
     def update(self):
+
         global boss_HP
 
         hit_list = pygame.sprite.spritecollide(self, lasers, True)
@@ -376,13 +380,11 @@ class Mob(pygame.sprite.Sprite):
         for h in hit_list:
             self.health -= 1
             player.score += 50
-            if level == 4:
-                boss_HP -= 1
 
-        if len(hit_list) > 0 and self.health <= 0:
-            pygame.mixer.Channel(3).play(EXPLOSION_SFX)
+        if self.health <= 0:
             self.kill()
-
+            pygame.mixer.Channel(3).play(EXPLOSION_SFX)
+            
 
 class Bomb(pygame.sprite.Sprite):
     def __init__(self, image):
@@ -466,7 +468,7 @@ class Fleet():
             self.drop = 20
             self.bomb_rate = 4
         elif level == 4:
-            self.speed = 10
+            self.speed = 8
             self.moving_right = True
             self.drop = 10
             self.bomb_rate = 1
@@ -627,14 +629,17 @@ def show_title_screen():
     title_text = FONT_XL.render("Danmaku Python Shooter", 1, WHITE)
     sub_text = FONT_LG.render("Press SPACE to start!", 1, WHITE)
     difficulty_txt = FONT_SM.render("Difficulty: " + str(difficulty) + " (Press ENTER key to change)", 1, YELLOW)
+    name_txt = FONT_SM.render("By Christopher Rodriguez, 2019-2020", 1, WHITE)
     t1 = title_text.get_width()
     t2 = sub_text.get_width()
+    t3 = name_txt.get_width()
     difficulty_rect = difficulty_txt.get_rect()
     difficulty_rect.right = WIDTH - 20
     difficulty_rect.top =  20
     screen.blit(title_text, [WIDTH/2 - t1/2, 256])
     screen.blit(sub_text, [WIDTH/2 - t2/2, 356])
     screen.blit(difficulty_txt, difficulty_rect)
+    screen.blit(name_txt, [WIDTH/2 - t3/2, 686])
 
 def show_main_background():
     screen.blit(background_img_resample, [0, 0])
@@ -718,13 +723,15 @@ def draw_health(player):
     else:
         color = GREEN
 
-    bar_length = ratio * 249
+    bar_length = ratio * 250
     
-    pygame.draw.rect(screen, WHITE, [850, 682, 249, 28])
+    pygame.draw.rect(screen, WHITE, [850, 682, 250, 28])
     pygame.draw.rect(screen, color, [850, 682, bar_length, 28])
 
 def draw_boss_health():
-    ratio = boss_HP / boss_maxHP
+    global boss
+    
+    ratio = boss.health / boss.max_health
     color = GREEN
     
     if ratio < .26:
@@ -735,9 +742,11 @@ def draw_boss_health():
         color = GREEN
 
     bar_length = ratio * 400
-    
-    pygame.draw.rect(screen, WHITE, [215, 682, 400, 28])
-    pygame.draw.rect(screen, color, [215, 682, bar_length, 28])
+
+    ''' Only draw during final level '''
+    if level == 4:
+        pygame.draw.rect(screen, WHITE, [215, 682, 400, 28])
+        pygame.draw.rect(screen, color, [215, 682, bar_length, 28])
 
 def draw_current_level(level):
     if hard_mode == True:
@@ -771,7 +780,7 @@ def update_highscore():
     if player.score >= player.high_score:
         player.high_score = player.score
 
-    with open(current_path + '/assets/score/high_score.txt', 'w') as f:
+    with open(current_path + '/high_score.txt', 'w') as f:
         f.write(str(player.high_score))
 
 def get_powerup_location():
@@ -850,15 +859,15 @@ def start_level(level):
     update_mode()
 
 def begin_fight():
-    global mobs, mob_list
+    global mobs, mob_list, boss
 
     ''' Make boss the only mob enemy and add it to the list '''
     boss_img = final_boss_img_scaled
-    mob = Mob(10, -300, boss_img)
+    boss = Mob(10, -300, boss_img)
 
-    mob_list = [mob]
+    #mob_list = [boss]
 
-    mobs.add(mob_list)
+    mobs.add(boss)
 
     ''' Update Mode '''
     update_mode()
@@ -869,7 +878,7 @@ def setup():
     global player, ship, lasers, mobs, bombs, powerups, fleet
 
     ''' Initial Game Level '''
-    level = 1
+    level = 3
 
     ''' Initial Difficulty Set to Normal '''
     hard_mode = False
@@ -888,7 +897,7 @@ def setup():
     player.high_score = 5000
     
     ''' Retrieve High Score if it exists '''
-    file_high_score = open(current_path + '/assets/score/high_score.txt', 'r')
+    file_high_score = open(current_path + '/high_score.txt', 'r')
     player.high_score = int(file_high_score.readline())
     file_high_score.close()
     
@@ -1002,7 +1011,7 @@ while not done:
                 stage = INTERMISSION
             elif level == 4:
                 stage = BOSS
-            elif level > 4 and mob_collide == False:
+            elif level > 4:
                 stage = WIN
                 pygame.mixer.Channel(4).play(WIN_SFX)
             else:
