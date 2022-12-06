@@ -1,6 +1,6 @@
 ## Welcome to the Official Site of Danmaku Python Shooter!
 
-Danmaku Python Shooter is a shooting game where you must protect your Windows desktop from being invaded by malicious viruses. The word "danmaku" is a Japanese word for "bullethell," which is the genre of video games where the player must evade a barrage of projectiles with normally very little HP. You can download the [source code (ZIP)](https://github.com/ChrisRod622922/danmaku-python-shooter/archive/master.zip) or the [Windows executable file](https://github.com/ChrisRod622922/danmaku-python-shooter/releases)! You can now play on [MacOSX](https://github.com/ChrisRod622922/danmaku-python-shooter/releases)!
+Danmaku Python Shooter is a shooting game where you must protect your Windows desktop from being invaded by malicious viruses. The word "danmaku" is a Japanese word for "bullethell," which is the genre of video games where the player must evade a barrage of projectiles with normally very little HP. You can download the [source code (ZIP)](https://github.com/ChrisRod622922/danmaku-python-shooter/archive/master.zip) or the [Windows executable file](https://github.com/ChrisRod622922/danmaku-python-shooter/releases)!
 
 ### Story
 
