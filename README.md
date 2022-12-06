@@ -83,6 +83,8 @@ DISCLAIMER: I do not own the rights to this song, so do NOT reproduce, distribut
 #### Sounds
 All sound effects used are (C) Creative Commons and are free to download at [www.freesound.org](https://www.freesound.org).
 
+*This game was created for a school project.*
+
 ### Support and Contact
 
 For any questions or reports of bugs, please leave them under _issues_. Thank you.
